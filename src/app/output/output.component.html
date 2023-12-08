@@ -1,1 +1,23 @@
-<p>output works!</p>
+<mat-card>
+  <mat-card-title>{{title}}</mat-card-title>
+  <p>
+    <label class="output-label">Name: </label>
+    <span class="output-value">{{employee.name}}</span>
+  </p>
+  <p>
+    <label class="output-label">Salary: </label>
+    <span class="output-value">{{employee.salary | currency}}</span>
+  </p>
+  <p>
+    <label class="output-label">Type of Employment: </label>
+    <span class="output-value">{{employee.employmentType}}</span>
+  </p>
+  <p>
+    <label class="output-label">Certified? </label>
+    <span class="output-value">{{isCertifiedString(employee.certified)}}</span>
+  </p>
+
+  <p>
+    <a mat-raised-button routerLink="input">Go Back</a>
+  </p>
+</mat-card>

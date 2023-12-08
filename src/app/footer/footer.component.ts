@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
+  today: Date;
 
+  constructor() {
+    this.today = new Date();
+  }
 }

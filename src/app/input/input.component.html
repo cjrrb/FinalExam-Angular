@@ -1,1 +1,41 @@
-<p>input works!</p>
+<mat-card>
+  <mat-card-title>{{title}}</mat-card-title>
+  <form [formGroup]="form" (ngSubmit)="send(form.value)">
+    <p>
+      <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+      <mat-error *ngIf="!form.get('name')?.valid && form.get('name')?.touched">
+        Please enter your name.
+      </mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+      <mat-label>Salary</mat-label>
+      <input matInput formControlName="salary" pattern="^\d*\.?\d+$">
+      <mat-error *ngIf="!form.get('salary')?.valid && form.get('salary')?.touched">
+        Please enter a valid number
+      </mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <label>Employment Type</label><br>
+      <mat-radio-group formControlName="employmentType">
+        <mat-radio-button value="Permanent">Permanent</mat-radio-button><br>
+        <mat-radio-button value="Part-Time">Part-Time</mat-radio-button><br>
+        <mat-radio-button value="Seasonal">Seasonal</mat-radio-button>
+        <mat-error *ngIf="!form.get('employmentType')?.valid && form.get('employmentType')?.touched">
+          Select your type of employment
+        </mat-error>
+      </mat-radio-group>
+    </p>
+    <p>
+      <label>Certified?</label><br/>
+      <mat-checkbox value="true" formControlName="certified"></mat-checkbox>
+    </p>
+    <p>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </p>
+  </form>
+</mat-card>
